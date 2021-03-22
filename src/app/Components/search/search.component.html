@@ -1,0 +1,70 @@
+<app-navbar (word)="search($event)"></app-navbar>
+
+<div class="col-md-10 searchContent">
+  <h5 class="results" *ngIf="paginate">
+    <strong>
+      Resultados para "<i>{{ word }}</i></strong
+    >"
+  </h5>
+  <div class="card-columns">
+    <div
+      class="card shadow card-height"
+      *ngFor="
+        let item of results
+          | paginate
+            : {
+                itemsPerPage: 50,
+                currentPage: p,
+                totalItems: totalItemsPagination
+              };
+        let i = index
+      "
+    >
+      <div class="row no-gutters">
+        <div class="row" style="vertical-align: middle">
+          <div class="col-md-4 mr-2" style="margin: 1em">
+            <img
+              src="{{ item.thumbnail }}"
+              class="shadow p-3 card-img-top size-img"
+            />
+          </div>
+          <div class="col-md-6 title">
+            <h6 class="card-title">{{ item.title }}</h6>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <h6><strong>Vendedor: </strong>{{ sellers[i]?.nickname }}</h6>
+          <h6><strong>Precio: </strong> {{ item.price | currency }}</h6>
+          <h5>
+            <span *ngIf="shipping[i]" class="badge badge-success"
+              ><i class="fa fa-shopping-cart"></i> Envio Gratis</span
+            >
+          </h5>
+          <a routerLink="/details/{{ item.id }}" class="btn btn-primary"
+            >Ver más detalles</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-12 loading" *ngIf="loading">
+  <i class="fa fa-spinner fa-5x fa-spin"></i>
+</div>
+<div class="col-md-10 alertProducts" *ngIf="!data">
+  <div class="alert alert-primary" role="alert">
+    <h5><strong>¡Sin Productos!</strong></h5>
+    Actualmente no se encuentran productos relacionados a la palabra Ingresada.
+  </div>
+</div>
+<div class="col-md-10 alertProducts" *ngIf="initial">
+  <div class="alert alert-primary" role="alert">
+    <h5><strong>¡Ingresa un Producto!</strong></h5>
+    Ingresa el producto que deseas consultar.
+  </div>
+</div>
+<app-pagination
+  (currentPage)="pageChanged($event)"
+  *ngIf="paginate"
+></app-pagination>

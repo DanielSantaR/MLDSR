@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+
+.down {
+  position: absolute;
+  bottom: 0px;
+  margin: 2em;
+}
+
+.navColor {
+  background-color: #000000;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 5em;
+}
+
+.title {
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.searchBotton {
+  background-color: #9296cc;
+  margin-left: 8%;
+}
+
+.web-bottom {
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  margin: 2em;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  margin: auto;
+}
+
+
+@media (min-width: 700px) {
+  .size {
+    width: 120%;
+    margin-left: 24%;
+    margin-top: 5%;
+  }
+  .search {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    text-align: center;
+  }
+  .searchContent {
+    margin: 3em;
+    margin-left: 8em;
+  }
+  .alertProducts {
+    margin: 3em;
+    text-align: center;
+  }
+  .results {
+    margin: 2em;
+    text-align: center;
+    margin-left: ce;
+  }
+  .size-img {
+    width: 100%;
+  }
+  .card-height {
+    min-height: 22em;
+  }
+  .searchBotton{
+    margin-top: 44.5pt;
+  }
+}
