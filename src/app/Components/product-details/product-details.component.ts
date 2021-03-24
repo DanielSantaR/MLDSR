@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MLApiService } from 'src/app/Services/mlapi.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { MLApiService } from 'src/app/Services/mlapi.service';
 export class ProductDetailsComponent implements OnInit {
   item: any;
   flag: boolean = false;
-  constructor(private router: ActivatedRoute, private mlService: MLApiService) {
+  constructor(private router: ActivatedRoute, private mlService: MLApiService, private navrouter: Router) {
     this.mlService
       .getItemById(this.router.snapshot.paramMap.get('id'))
       .subscribe((data) => {
@@ -21,4 +21,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  search(event: any) {
+    if (event !== '') {
+      this.navrouter.navigate(['/search'], {queryParams: {search: event }});
+    }
+  }
 }
