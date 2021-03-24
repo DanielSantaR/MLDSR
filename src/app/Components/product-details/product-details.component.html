@@ -1,44 +1,68 @@
+<app-navbar (word)="search($event)"></app-navbar>
+
 <div class="container" *ngIf="flag">
-  <div class="card mb-3">
-    <div
-      id="carouselExampleControls"
-      class="carousel slide"
-      data-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <div
-          class="carousel-item"
-          *ngFor="let picture of item.pictures; let i = index"
-          [ngClass]="{ active: i == 0 }"
-        >
-          <img class="d-block w-100" src="{{ picture.url }}" width="5" height="1000"/>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div
+            id="carouselItemPictures"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div
+                class="carousel-item"
+                *ngFor="let picture of item.pictures; let i = index"
+                [ngClass]="{ active: i == 0 }"
+              >
+                <img
+                  class="d-block w-100"
+                  src="{{ picture.url }}"
+                  width="5"
+                  height="1000"
+                />
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselItemPictures"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselItemPictures"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
         </div>
       </div>
-      <a
-        class="carousel-control-prev"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a
-        class="carousel-control-next"
-        href="#carouselExampleControls"
-        role="button"
-        data-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ item.title }}</h5>
-      <p class="card-text"></p>
-      <p class="card-text">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </p>
+      <div class="col">
+        <div class="row">
+          <div>
+            <p></p>
+            <h5>{{ item.title }}</h5>
+            <p></p>
+            <p>
+              <small class="text-muted">Descripción</small>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

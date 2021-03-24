@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MLApiService } from 'src/app/Services/mlapi.service';
 import { Product } from 'src/app/Models/product';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -19,9 +19,20 @@ export class SearchComponent implements OnInit {
   p: number = 1;
   initial: boolean = true;
   totalItemsPagination: number = 0;
-  constructor(private mlService: MLApiService, private router: Router) {}
+  constructor(
+    private mlService: MLApiService,
+    private navrouter: Router,
+    private router: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.router.queryParams.subscribe(params => {
+      if (params.search !== undefined){
+        this.word = params.search;
+        this.searchItem(0);
+      }
+    });
+  }
   search(event: any) {
     if (event !== '') {
       this.word = event;
@@ -70,7 +81,7 @@ export class SearchComponent implements OnInit {
     this.searchItem((event - 1) * 50);
     window.scroll(0, 0);
   }
-  goToDetails(id: string){
-    this.router.navigateByUrl(`/details/${id}`)
+  goToDetails(id: string) {
+    this.navrouter.navigateByUrl(`/details/${id}`);
   }
 }
