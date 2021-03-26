@@ -54,12 +54,22 @@
       <div class="col">
         <div class="row">
           <div>
-            <p></p>
-            <h5>{{ item.title }}</h5>
-            <p></p>
-            <p>
-              <small class="text-muted">Descripción</small>
-            </p>
+            <br><br/>
+            <h5><strong>{{ item.title }}</strong></h5>
+            <br><br/>
+            <h5><strong>Precio ahora:</strong> {{ item.price | currency }}</h5>
+            <br><br/>
+            <h5><strong>Precio original:</strong> {{ item.original_price | currency }}</h5>
+            <br><br/>
+            <h5><strong>Descuento:</strong> {{ discount }}%</h5>
+            <br><br/>
+            <h5><strong>Vendedor:</strong> {{ seller.nickname }}</h5>
+            <br><br/>
+            <h5><strong>Descripción:</strong> {{ description }}</h5>
+            <br><br/>
+            <!-- <p>
+              <small class="text-muted">Precio: {{ item.price }}</small>
+            </p> -->
           </div>
         </div>
       </div>
