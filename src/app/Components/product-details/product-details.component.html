@@ -10,6 +10,14 @@
             class="carousel slide"
             data-ride="carousel"
           >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselItemPictures"
+                *ngFor="let picture of item.pictures; let i = index"
+                [attr.data-slide-to]="i"
+                [ngClass]="{ active: i == 0 }"
+              ></li>
+            </ol>
             <div class="carousel-inner">
               <div
                 class="carousel-item"
@@ -54,21 +62,26 @@
       <div class="col">
         <div class="row">
           <div>
-            <br><br/>
-            <h5><strong>{{ item.title }}</strong></h5>
-            <br><br/>
+            <br /><br />
+            <h5>
+              <strong>{{ item.title }}</strong>
+            </h5>
+            <br /><br />
             <h5><strong>Precio:</strong> {{ item.price | currency }}</h5>
-            <br><br/>
+            <br /><br />
             <div *ngIf="item.original_price">
-              <h5><strong>Precio original:</strong> {{ item.original_price | currency }}</h5>
-              <br><br/>
+              <h5>
+                <strong>Precio original:</strong>
+                {{ item.original_price | currency }}
+              </h5>
+              <br /><br />
               <h5><strong>Descuento:</strong> {{ discount }}%</h5>
-              <br><br/>
+              <br /><br />
             </div>
             <h5><strong>Vendedor:</strong> {{ seller.nickname }}</h5>
-            <br><br/>
+            <br /><br />
             <h5><strong>Descripción:</strong> {{ description }}</h5>
-            <br><br/>
+            <br /><br />
           </div>
         </div>
       </div>
