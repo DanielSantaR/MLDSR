@@ -54,12 +54,21 @@
       <div class="col">
         <div class="row">
           <div>
-            <p></p>
-            <h5>{{ item.title }}</h5>
-            <p></p>
-            <p>
-              <small class="text-muted">Descripción</small>
-            </p>
+            <br><br/>
+            <h5><strong>{{ item.title }}</strong></h5>
+            <br><br/>
+            <h5><strong>Precio:</strong> {{ item.price | currency }}</h5>
+            <br><br/>
+            <div *ngIf="item.original_price">
+              <h5><strong>Precio original:</strong> {{ item.original_price | currency }}</h5>
+              <br><br/>
+              <h5><strong>Descuento:</strong> {{ discount }}%</h5>
+              <br><br/>
+            </div>
+            <h5><strong>Vendedor:</strong> {{ seller.nickname }}</h5>
+            <br><br/>
+            <h5><strong>Descripción:</strong> {{ description }}</h5>
+            <br><br/>
           </div>
         </div>
       </div>
