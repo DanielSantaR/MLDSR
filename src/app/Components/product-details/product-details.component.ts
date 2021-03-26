@@ -13,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   seller: any;
   shipping: boolean[] = [];
   discount: number;
-  description: string = "";
+  description: string = '';
   constructor(
     private router: ActivatedRoute,
     private mlService: MLApiService,
@@ -23,9 +23,10 @@ export class ProductDetailsComponent implements OnInit {
       .getItemById(this.router.snapshot.paramMap.get('id'))
       .subscribe((data) => {
         this.item = data[0]['body'];
-        this.discount = Math.round(
-          Math.abs((this.item.original_price * 100) / this.item.price - 100)
-        );
+        let prod = (this.item.price * 100) / this.item.original_price;
+        if (this.item.original_price) {
+          this.discount = Math.round(Math.abs(prod - 100));
+        }
         this.getSeller();
         this.getDetails();
       });
@@ -47,7 +48,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   getDetails() {
     this.mlService.getDescription(this.item['id']).subscribe((data) => {
-      this.description = data.plain_text
+      this.description = data.plain_text;
     });
   }
 }
